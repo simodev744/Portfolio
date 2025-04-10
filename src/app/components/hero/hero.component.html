@@ -1,14 +1,85 @@
-<section class="flex items-center justify-between py-20 px-6 bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-white">
-  <!-- Image Section -->
-  <div class="flex-1">
-    <img src="https://source.unsplash.com/1600x900/?developer,code" alt="Developer Image" class="w-full h-full object-cover rounded-lg shadow-lg">
-  </div>
+<section class="relative py-20 px-6 bg-gradient-to-r from-blue-500 to-purple-600 dark:from-gray-800 dark:to-gray-900 text-white overflow-hidden">
+  <!-- Background circles -->
+  <div class="absolute -top-20 -left-20 w-64 h-64 rounded-full bg-white/10 backdrop-blur-sm"></div>
+  <div class="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-white/10 backdrop-blur-sm"></div>
 
-  <!-- Text Section -->
-  <div class="flex-1 pl-10">
-    <h1 class="text-4xl font-bold mb-4">Hello, I'm [Your Name]</h1>
-    <p class="text-xl mb-4">I am a passionate web developer focused on building responsive and user-friendly websites and applications.</p>
-    <p class="text-lg mb-6">With experience in Angular, React, JavaScript, and modern web development practices, I aim to create impactful digital solutions that provide value to users.</p>
-    <a href="#contact" class="inline-block px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition duration-300">Contact Me</a>
+  <div class="container mx-auto flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
+    <!-- Text Content -->
+    <div class="lg:w-1/2 text-center lg:text-left">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">Full Stack Developer</h1>
+      <p class="text-xl md:text-2xl mb-8 leading-relaxed">
+        Building robust applications with <span class="font-semibold">Java</span>,
+        <span class="font-semibold">Spring Boot</span>, <span class="font-semibold">Angular</span>,
+        <span class="font-semibold">Python</span>, and <span class="font-semibold">Node.js</span>
+      </p>
+
+      <div class="flex flex-wrap justify-center lg:justify-start gap-4 mb-10">
+        <a href="#projects" class="px-6 py-3 bg-white text-blue-600 font-semibold rounded-full hover:bg-gray-100 transition duration-300 shadow-lg">
+          View Projects
+        </a>
+        <a href="#contact" class="px-6 py-3 border-2 border-white text-white font-semibold rounded-full hover:bg-white/10 transition duration-300">
+          Contact Me
+        </a>
+      </div>
+    </div>
+
+    <!-- Tech Circles -->
+    <div class="lg:w-1/2 relative">
+      <div class="relative w-64 h-64 md:w-80 md:h-80 mx-auto">
+        <!-- Center circle -->
+        <div class="absolute inset-0 flex items-center justify-center">
+          <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center animate-pulse">
+            <span class="text-xl md:text-2xl font-bold">Full Stack</span>
+          </div>
+        </div>
+
+        <!-- Orbiting tech circles -->
+        <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-orange-500 flex items-center justify-center shadow-lg animate-float">
+          <span class="text-white font-bold">Java</span>
+        </div>
+
+        <div class="absolute top-1/2 right-0 transform translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-green-600 flex items-center justify-center shadow-lg animate-float-delay-1">
+          <span class="text-white font-bold">Spring</span>
+        </div>
+
+        <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-1/2 w-20 h-20 rounded-full bg-red-500 flex items-center justify-center shadow-lg animate-float-delay-2">
+          <span class="text-white font-bold">Angular</span>
+        </div>
+
+        <div class="absolute top-1/2 left-0 transform -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full bg-blue-500 flex items-center justify-center shadow-lg animate-float-delay-3">
+          <span class="text-white font-bold">Python</span>
+        </div>
+
+        <div class="absolute top-1/4 right-1/4 w-20 h-20 rounded-full bg-yellow-500 flex items-center justify-center shadow-lg animate-float-delay-4">
+          <span class="text-white font-bold">Node.js</span>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
+
+<style>
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  .animate-float {
+    animation: float 4s ease-in-out infinite;
+  }
+  .animate-float-delay-1 {
+    animation: float 4s ease-in-out 0.5s infinite;
+  }
+  .animate-float-delay-2 {
+    animation: float 4s ease-in-out 1s infinite;
+  }
+  .animate-float-delay-3 {
+    animation: float 4s ease-in-out 1.5s infinite;
+  }
+  .animate-float-delay-4 {
+    animation: float 4s ease-in-out 2s infinite;
+  }
+</style>

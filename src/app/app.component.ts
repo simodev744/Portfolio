@@ -10,7 +10,7 @@ import {AproposComponent} from './components/apropos/apropos.component';
 
 @Component({
   selector: 'app-root',
-  imports: [AproposComponent,FooterComponent, HeaderComponent, ProjectsComponent, HeroComponent, DarkModeToggleComponent, ContactComponent],
+  imports: [AproposComponent,FooterComponent, HeaderComponent, ProjectsComponent, HeroComponent, ContactComponent],
   templateUrl: './app.component.html',
   standalone: true,
   styleUrl: './app.component.scss'

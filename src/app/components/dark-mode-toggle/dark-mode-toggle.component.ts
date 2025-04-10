@@ -1,15 +1,23 @@
 import { Component, Inject, PLATFORM_ID, AfterViewInit } from '@angular/core';
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-dark-mode-toggle',
   templateUrl: './dark-mode-toggle.component.html',
   styleUrls: ['./dark-mode-toggle.component.css'],
-  standalone: true
+  standalone: true,
+  imports: [FontAwesomeModule]
 })
 export class DarkModeToggleComponent implements AfterViewInit {
   isDarkMode = false;
+
   isBrowser: boolean;
+ // Default icon
+
+  faSun = faSun;
+  faMoon = faMoon;
 
   constructor(
     @Inject(DOCUMENT) private document: Document,
@@ -20,10 +28,12 @@ export class DarkModeToggleComponent implements AfterViewInit {
 
   ngAfterViewInit(): void {
     if (this.isBrowser) {
+      // Check for saved theme preference or system preference
       const savedTheme = localStorage.getItem('theme');
-      if (savedTheme === 'dark') {
-        this.isDarkMode = true;
-        this.document.documentElement.classList.add('dark');
+      const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+      if (savedTheme === 'dark' || (!savedTheme && systemPrefersDark)) {
+        this.enableDarkMode();
       }
     }
   }
@@ -31,14 +41,18 @@ export class DarkModeToggleComponent implements AfterViewInit {
   toggleDarkMode(): void {
     if (!this.isBrowser) return;
 
-    this.isDarkMode = !this.isDarkMode;
+    this.isDarkMode ? this.disableDarkMode() : this.enableDarkMode();
+  }
 
-    if (this.isDarkMode) {
-      this.document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      this.document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
+  private enableDarkMode(): void {
+    this.isDarkMode = true;
+    this.document.documentElement.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+  }
+
+  private disableDarkMode(): void {
+    this.isDarkMode = false;
+    this.document.documentElement.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
   }
 }
