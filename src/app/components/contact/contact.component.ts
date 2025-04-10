@@ -1,41 +1,58 @@
 import { Component } from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {NgIf} from '@angular/common';
+import {FormsModule, NgForm} from '@angular/forms';
+import {NgIf, NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
   standalone: true,
   imports: [
+    NgIf,
     FormsModule,
-    NgIf
+    NgOptimizedImage
   ],
-  styleUrls: ['./contact.component.css']
+  styleUrls: ['./contact.component.scss']
 })
-export class ContactComponent {
-  // Form data
-  name: string = '';
-  email: string = '';
-  message: string = '';
+export class ContactFormComponent {
+  // Form data to bind with the form
+  formData = {
+    name: '',
+    email: '',
+    message: ''
+  };
 
-  // Validation messages
-  successMessage: string = '';
-  errorMessage: string = '';
 
-  // Submit function
-  submitForm() {
-    // Check if the form is valid
-    if (this.name && this.email && this.message) {
-      this.successMessage = 'Your message has been sent successfully!';
-      this.errorMessage = '';
-      // Here you could send the form data to a server or email
-      // For now, we just reset the form
-      this.name = '';
-      this.email = '';
-      this.message = '';
-    } else {
-      this.errorMessage = 'Please fill out all fields.';
-      this.successMessage = '';
+  successMessage: string | null = null;
+  errorMessage: string | null = null;
+
+  // Submit the form
+  submitForm(contactForm: NgForm): void {
+    if (contactForm.invalid) {
+      return;
     }
+
+
+    this.simulateFormSubmission(contactForm);
+  }
+
+  // Simulate form submission logic
+  simulateFormSubmission(contactForm: NgForm): void {
+    // Clear previous messages
+    this.successMessage = null;
+    this.errorMessage = null;
+
+
+    setTimeout(() => {
+
+      const isSuccess = Math.random() > 0.2; // 80% chance of success
+
+      if (isSuccess) {
+        this.successMessage = 'Your message has been sent successfully!';
+        // Reset form data
+        contactForm.resetForm();
+      } else {
+        this.errorMessage = 'Something went wrong. Please try again later.';
+      }
+    }, 1000);
   }
 }
