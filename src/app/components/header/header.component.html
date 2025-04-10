@@ -1,0 +1,37 @@
+<!-- header.component.html -->
+<header class="bg-white dark:bg-gray-800 text-gray-800 dark:text-white p-4 flex justify-between items-center">
+  <div class="flex items-center space-x-4">
+    <!-- Logo and Title -->
+    <img src="assets/logo.png" alt="Logo" class="h-10 w-10">
+    <h1 class="text-2xl font-bold">Portfolio</h1>
+  </div>
+
+  <!-- Navigation Menu -->
+  <nav class="hidden md:flex space-x-6">
+    <ul class="flex space-x-6">
+      <li><a href="#accueil" class="hover:text-blue-500 dark:hover:text-blue-300"><i class="fas fa-home"></i> Accueil</a></li>
+      <li><a href="#about" class="hover:text-blue-500 dark:hover:text-blue-300"><i class="fas fa-user"></i> About</a></li>
+      <li><a href="#apropos" class="hover:text-blue-500 dark:hover:text-blue-300"><i class="fas fa-info-circle"></i> Apropos</a></li>
+      <li><a href="#projects" class="hover:text-blue-500 dark:hover:text-blue-300"><i class="fas fa-briefcase"></i> Projects</a></li>
+
+       <li>  <app-dark-mode-toggle ></app-dark-mode-toggle></li>
+    </ul>
+  </nav>
+
+  <!-- Mobile Menu Button -->
+  <div class="md:hidden">
+    <button (click)="toggleMenu()" class="text-gray-800 dark:text-white focus:outline-none">
+      <i class="fas fa-bars"></i>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div *ngIf="isMenuOpen" class="absolute top-16 right-0 bg-white dark:bg-gray-800 p-4 rounded-lg shadow-lg md:hidden">
+    <ul class="space-y-4">
+      <li><a href="#accueil" class="text-gray-800 dark:text-white hover:text-blue-500">Accueil</a></li>
+      <li><a href="#about" class="text-gray-800 dark:text-white hover:text-blue-500">About</a></li>
+      <li><a href="#apropos" class="text-gray-800 dark:text-white hover:text-blue-500">Apropos</a></li>
+      <li><a href="#projects" class="text-gray-800 dark:text-white hover:text-blue-500">Projects</a></li>
+    </ul>
+  </div>
+</header>

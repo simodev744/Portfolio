@@ -5,10 +5,12 @@ import {HeaderComponent} from './components/header/header.component';
 import {ProjectsComponent} from './components/projects/projects.component';
 import {HeroComponent} from './components/hero/hero.component';
 import {DarkModeToggleComponent} from './components/dark-mode-toggle/dark-mode-toggle.component';
+import {ContactComponent} from './components/contact/contact.component';
+import {AproposComponent} from './components/apropos/apropos.component';
 
 @Component({
   selector: 'app-root',
-  imports: [FooterComponent, HeaderComponent, ProjectsComponent, HeroComponent, DarkModeToggleComponent],
+  imports: [AproposComponent,FooterComponent, HeaderComponent, ProjectsComponent, HeroComponent, DarkModeToggleComponent, ContactComponent],
   templateUrl: './app.component.html',
   standalone: true,
   styleUrl: './app.component.scss'
