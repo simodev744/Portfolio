@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import {NgIf} from '@angular/common';
+import {NgIf, NgOptimizedImage} from '@angular/common';
 import {DarkModeToggleComponent} from "../dark-mode-toggle/dark-mode-toggle.component";
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   standalone: true,
-    imports: [
-        NgIf,
-        DarkModeToggleComponent
-    ],
+  imports: [
+    NgIf,
+    DarkModeToggleComponent,
+    NgOptimizedImage
+  ],
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent {
